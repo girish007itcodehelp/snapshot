@@ -25,7 +25,7 @@ export const theme = extendTheme(
       global: (props: any) => ({
         body: {
           bg: mode('#f7f7f7', 'BlackAlpha.600')(props),
-        }
+        },
       })
     },
     // colors: {
@@ -48,24 +48,25 @@ export const theme = extendTheme(
       Input: {
         baseStyle: {
           _focus: {
-            borderColor: '#e8f4f9'
+            borderColor: '#e8f4f9',
+            boxShadow: 'none'
           }
         }
       },
       ...InputForm,
       Container: {
         baseStyle: {
-          // maxW: "1280px",
-          maxW: "1680px",
+          maxW: "1280px",
+          // maxW: "1680px",
         },
       },
       Button: {
         baseStyle: {
           // ...define your base styles
-          color: '#fff',
-          bg: '#01b981',
+          // color: '#fff',
+          // bg: '#01b981',
           _hover: {
-            bg: '#059669'
+            // bg: '#059669'
           }
         },
         variants: {
