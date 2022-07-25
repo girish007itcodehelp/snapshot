@@ -27,7 +27,7 @@ const RightBottomCard = (props: Props) => {
         <Accordion allowToggle>
           {communityKeys &&
             communityKeys.map((item, i) => (
-              <AccordionItem>
+              <AccordionItem key={i}>
                 <h2>
                   <AccordionButton
                     _expanded={{ bg: "#766fe4", color: "white" }}
@@ -41,8 +41,13 @@ const RightBottomCard = (props: Props) => {
                 <AccordionPanel pb={4}>
                   <Wrap>
                     {item?.keys &&
-                      item.keys.map((key, i) => (
-                        <Button variant="solid" borderRadius="3xl" size="sm">
+                      item.keys.map((key, ind) => (
+                        <Button
+                          variant="solid"
+                          key={ind}
+                          borderRadius="3xl"
+                          size="sm"
+                        >
                           {key.name}
                         </Button>
                       ))}
