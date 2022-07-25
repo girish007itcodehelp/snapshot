@@ -1,4 +1,4 @@
-import { extendTheme, withDefaultVariant, type ThemeConfig } from "@chakra-ui/react";
+import { baseStyle, extendTheme, ThemeOverride, withDefaultVariant, type ThemeConfig } from "@chakra-ui/react";
 import { InputForm } from "./Input";
 import { mode } from '@chakra-ui/theme-tools'
 
@@ -16,7 +16,7 @@ export const theme = extendTheme(
     components: ['Input', 'NumberInput', 'PinInput'],
   }),
   withDefaultVariant({
-    variant: 'primary',
+    variant: 'solid',
     components: ['Button'],
   }),
   {
@@ -47,10 +47,20 @@ export const theme = extendTheme(
       Input: {
         baseStyle: {
           _focus: {
-            borderColor: '#e8f4f9',
+            // borderColor: '#766fe4',
+            // boxShadow: 'none'
+          },
+        },
+        filled: {
+          _focus: {
+            outlineColor: '#766fe4',
+            borderColor: '#766fe4',
             boxShadow: 'none'
-          }
-        }
+          },
+        },
+        // defaultProps: {
+        //   variant: 'baseStyle'
+        // }
       },
       ...InputForm,
       Container: {
