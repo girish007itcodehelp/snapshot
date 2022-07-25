@@ -43,7 +43,6 @@ export const theme = extendTheme(
     //     900: "#0d47a1",
     //   },
     // },
-
     components: {
       Input: {
         baseStyle: {
