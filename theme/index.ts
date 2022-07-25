@@ -24,7 +24,7 @@ export const theme = extendTheme(
     styles: {
       global: (props: any) => ({
         body: {
-          bg: mode('#f7f7f7', 'BlackAlpha.600')(props),
+          bg: mode('#f7f7f7', '#223544')(props),
         },
       })
     },
