@@ -17,12 +17,13 @@ const TopCard: React.FC = () => {
       bg={useColorModeValue("white", "#1f2a33")}
       boxShadow="md"
       borderRadius="md"
+      width="full"
     >
       <Flex
         p="15px"
         gap="15px"
-        borderBottom={"1px solid "}
-        borderColor={useColorModeValue("gray.300", "gray.700")}
+        // borderBottom={"1px solid "}
+        // borderColor={useColorModeValue("gray.300", "gray.700")}
       >
         <Button leftIcon={<HiPlusSm />} borderRadius="3xl" variant="solid">
           New
@@ -33,11 +34,6 @@ const TopCard: React.FC = () => {
         <Button leftIcon={<FaUpload />} borderRadius="3xl" variant="solid">
           Upload
         </Button>
-      </Flex>
-      <Flex p="15px">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
-        facere et. Illum et eos unde modi odit maxime fuga accusantium ipsum,
-        iusto neque quasi asperiores deserunt harum impedit recusandae ipsam?
       </Flex>
     </Box>
   );

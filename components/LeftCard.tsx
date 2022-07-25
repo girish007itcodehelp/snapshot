@@ -1,5 +1,6 @@
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Box, Icon, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
+import { FaChevronRight } from "react-icons/fa";
 
 const LeftCard: React.FC = () => {
   return (
@@ -12,42 +13,58 @@ const LeftCard: React.FC = () => {
       <Box>
         <Box
           p="15px"
-          borderBottom="0.5px solid"
-          borderColor={useColorModeValue("gray.100", "gray.900")}
+          borderBottom={"1px solid "}
+          bg={useColorModeValue("gray.100", "gray.800")}
+          borderColor={useColorModeValue("gray.300", "gray.700")}
+        >
+          Category
+        </Box>
+        <Box
+          p="15px"
           _hover={{
-            bg: useColorModeValue("blackAlpha.100", "gray.500"),
+            bg: useColorModeValue("blackAlpha.100", "gray.700"),
           }}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
           Facts
+          <Icon as={FaChevronRight} />
         </Box>
         <Box
           p="15px"
-          borderBottom="0.5px solid"
-          borderColor={useColorModeValue("gray.100", "gray.900")}
           _hover={{
-            bg: useColorModeValue("blackAlpha.100", "gray.500"),
+            bg: useColorModeValue("blackAlpha.100", "gray.700"),
           }}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
           News
+          <Icon as={FaChevronRight} />
         </Box>
         <Box
           p="15px"
-          borderBottom="0.5px solid"
-          borderColor={useColorModeValue("gray.100", "gray.900")}
           _hover={{
-            bg: useColorModeValue("blackAlpha.100", "gray.500"),
+            bg: useColorModeValue("blackAlpha.100", "gray.700"),
           }}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
-          Most Popular
+          Most Popular <Icon as={FaChevronRight} />
         </Box>
         <Box
           p="15px"
-          borderColor={useColorModeValue("gray.100", "gray.900")}
           _hover={{
-            bg: useColorModeValue("blackAlpha.100", "gray.500"),
+            bg: useColorModeValue("blackAlpha.100", "gray.700"),
           }}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
           Trending
+          <Icon as={FaChevronRight} />
         </Box>
       </Box>
     </Box>
