@@ -1,15 +1,15 @@
 import { Box, Button, Flex, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
-import Img from "./Image";
+import Img, { shimmer, toBase64 } from "./Image";
 import { community } from "data/communities";
 
-function toBase64(arg0: any) {
-  throw new Error("Function not implemented.");
-}
+// function toBase64(arg0: any) {
+//   throw new Error("Function not implemented.");
+// }
 
-function convertImage(arg0: number, arg1: number): any {
-  throw new Error("Function not implemented.");
-}
+// function convertImage(arg0: number, arg1: number): any {
+//   throw new Error("Function not implemented.");
+// }
 
 const RightCard: React.FC = () => {
   return (
@@ -35,13 +35,13 @@ const RightCard: React.FC = () => {
         >
           <Img
             src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29kaW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-            height="100px"
             objectFit="cover"
-            width="320px"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+
+            // height="100px"
+            // width="320px"
+            // placeholder="blur"
             // blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            //   convertImage(700, 475)
+            //   shimmer(100, 320)
             // )}`}
           />
           <Box
@@ -78,8 +78,7 @@ const RightCard: React.FC = () => {
           ))}
         <Box my={3} textAlign="center">
           <Button borderRadius="3xl" variant="solid">
-            {" "}
-            Show More{" "}
+            Show More
           </Button>
         </Box>
       </Box>
