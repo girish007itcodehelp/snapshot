@@ -1,3 +1,4 @@
+import React from "react";
 import NextImage from "next/image";
 import { Box, chakra, ImageProps } from "@chakra-ui/react";
 
@@ -19,19 +20,17 @@ const Img = (props: ImageProps | any) => {
     <Box width="100%" height="100%" position="relative">
       <Image
         {...props}
-        position="relative"
-        objectPosition="center"
+        layout="fill"
+        placeholder="blur"
         height="100%"
         width="100%"
-        layout="responsive"
-        placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(100, 320))}`}
       />
     </Box>
   );
 };
 
-export default Img;
+export default React.memo(Img);
 
 export const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

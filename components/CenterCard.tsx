@@ -1,20 +1,29 @@
-import { UpArrow, DownArrow } from "@assets/icons";
+import { VerifyIcon } from "@assets/icons";
 import {
   Avatar,
   Box,
   Button,
+  Collapse,
   Flex,
   Icon,
-  IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
+import Image from "next/image";
 import React, { useState } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
-import Img, { shimmer, toBase64 } from "./Image";
+import { SiVerizon } from "react-icons/si";
+import { shimmer, toBase64 } from "./Image";
+
+type Active = boolean;
 
 const CenterCard: React.FC = () => {
-  const [active, setActive] = useState<boolean>(false);
+  const [show, setShow] = useState<Active>(false);
+  const [active, setActive] = useState<Active>(false);
+
+  let srcImg =
+    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29kaW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80";
+
   return (
     <Box
       my="15px"
@@ -53,6 +62,7 @@ const CenterCard: React.FC = () => {
               onClick={() => setActive(!active)}
             />
           </Box>
+
           <Flex alignItems="center" justifyContent="center">
             <Icon
               as={FaRegCommentDots}
@@ -60,15 +70,16 @@ const CenterCard: React.FC = () => {
               fontSize={26}
             />
           </Flex>
+
           {/* <Box></Box> */}
         </Box>
-        <Box p="15px" flexGrow={1}>
+        <Box flexGrow={1}>
           <Flex
             gap="15px"
             alignItems="center"
             borderBottom="1px solid"
             borderColor={useColorModeValue("gray.300", "gray.700")}
-            py="15px"
+            p="15px"
           >
             <Avatar
               size="sm"
@@ -106,12 +117,60 @@ const CenterCard: React.FC = () => {
               </Button>
             </Box>
           </Flex>
-          <Box>
-            <Box height="300px" width="100%">
-              <Img
+          <Box p="15px">
+            <Box
+              noOfLines={2}
+              fontWeight={500}
+              fontSize="16px"
+              letterSpacing="wide"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur,
+              adipisci veritatis. A dolorum optio cum iure impedit illum
+              delectus sint aut enim totam, molestias non cumque tempora.
+              Distinctio, et amet.
+            </Box>
+          </Box>
+          <Box width="100%">
+            <Box height="300px" position="relative" width="100%">
+              <Image
+                src={srcImg}
                 objectFit="cover"
-                src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29kaW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                layout="fill"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(100, 320)
+                )}`}
               />
+            </Box>
+          </Box>
+          <Box p="15px">
+            <Box fontSize="12px" letterSpacing="wide">
+              <Collapse startingHeight={39} in={show}>
+                <Box noOfLines={show ? 0 : 2}>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life
+                  accusamus terry richardson ad squid. Nihil anim keffiyeh
+                  helvetica, craft beer labore wes anderson cred nesciunt
+                  sapiente ea proident. Anim pariatur cliche reprehenderit, enim
+                  eiusmod high life accusamus terry richardson ad squid. Nihil
+                  anim keffiyeh helvetica, craft beer labore wes anderson cred
+                  nesciunt sapiente ea proident.
+                </Box>
+              </Collapse>
+              <Box
+                position="relative"
+                textAlign="center"
+                // height="30px"
+                py="15px"
+              >
+                <Button
+                  size="sm"
+                  onClick={() => setShow(!show)}
+                  variant="solid"
+                  rounded="3xl"
+                >
+                  Show More
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>

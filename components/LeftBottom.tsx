@@ -8,6 +8,7 @@ const LeftBottom = () => {
       bg={useColorModeValue("white", "#1f2a33")}
       borderRadius="md"
       p="15px"
+      boxShadow="md"
     >
       <Button size="sm" variant="solid" borderRadius="3xl" minW="min-content">
         Top
