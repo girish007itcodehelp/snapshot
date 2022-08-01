@@ -41,9 +41,10 @@ const CenterCard: React.FC = () => {
             <Icon
               fontSize={40}
               as={AiFillCaretUp}
-              color={
-                active ? "#766fe4" : useColorModeValue("gray.500", "gray.600")
-              }
+              color={useColorModeValue("gray.500", "gray.600")}
+              // color={
+              //   active ? "#766fe4" : useColorModeValue("gray.500", "gray.600")
+              // }
               cursor="pointer"
               onClick={() => setActive(!active)}
             />

@@ -20,9 +20,11 @@ const initialState: AuthInterface = {
     user: {}
 };
 
-export const loginUser = createAsyncThunk("auth/login", async (data) => {
+export const loginUser = createAsyncThunk("auth/login", async () => {
+    let data = {}
     const unsubscribe = onAuthStateChanged(auth, (user: any) => {
         unsubscribe();
+        data = user;
     })
     console.log("unsubscribe", unsubscribe)
     // let currentUser;
@@ -30,7 +32,7 @@ export const loginUser = createAsyncThunk("auth/login", async (data) => {
     // let abc = onAuthStateChanged(auth, async (user) => {
     //     if (user) currentUser = user
     // })
-    return unsubscribe;
+    return data;
 });
 
 export const authSlice = createSlice({

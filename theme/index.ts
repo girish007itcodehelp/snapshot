@@ -13,7 +13,7 @@ const config: ThemeConfig = {
 export const theme = extendTheme(
   withDefaultVariant({
     variant: 'filled',
-    components: ['Input', 'NumberInput', 'PinInput'],
+    components: ['Input', 'NumberInput', 'PinInput', 'Textarea'],
   }),
   withDefaultVariant({
     variant: 'solid',
