@@ -6,21 +6,23 @@ import LeftCard from "@components/LeftCard";
 import RightBottomCard from "@components/RightBottomCard";
 import RightCard from "@components/RightCard";
 import TopCard from "@components/TopCard";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/clientApp";
 import type { GetServerSideProps, NextPage } from "next";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { authState, loginUser } from "redux/slices/authSlice";
+import { authState, setLoginUser } from "redux/slices/authSlice";
 import getStore from "redux/store";
 
 const Home: NextPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const user = useSelector(authState);
-  console.log("dis", user);
+  // console.log("dis", user);
   // const hello = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   const tat = e.target.value;
   //   toggleColorMode();
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
   }, [user]);
 
   // };
@@ -57,12 +59,20 @@ const Home: NextPage = () => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   const store = getStore();
-  await store.dispatch(loginUser());
+  let a = auth.onAuthStateChanged(async (user) => {
+    console.log("getserver", user?.providerData);
+    await store.dispatch(
+      setLoginUser({
+        ...user?.providerData[0],
+      })
+    );
+  });
+  console.log("a", a);
   return {
     props: {
-      initialState: JSON.parse(JSON.stringify(store.getState())),
+      initialState: store.getState(),
     },
   };
 };

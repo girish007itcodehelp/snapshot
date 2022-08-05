@@ -16,10 +16,6 @@ interface Props {
   onClose: () => void;
 }
 const NewPost: React.FC<Props> = ({ isOpen, onClose }) => {
-  const handleChange = (e: any) => {
-    console.log(e);
-  };
-
   return (
     <Modal size="xl" isCentered isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

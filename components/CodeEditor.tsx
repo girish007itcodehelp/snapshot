@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { githubDark } from "@uiw/codemirror-theme-github";
 
 interface Props {
-  onCodeChange?: void;
+  onCodeChange?: React.FC;
 }
 
 const myTheme = createTheme({
@@ -87,7 +87,7 @@ const CodeEditor: React.FC<Props> = ({ onCodeChange }) => {
         syntaxHighlighting(defaultHighlightStyle),
         markdown({ base: markdownLanguage, codeLanguages: languages }),
       ]}
-      onChange={onChange}
+      onChange={onCodeChange}
     />
   );
 };

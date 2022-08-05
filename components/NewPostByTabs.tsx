@@ -24,16 +24,20 @@ import { MdSubtitles } from "react-icons/md";
 import CodeEditor from "./CodeEditor";
 
 const NewPostByTabs = () => {
+  const handleChange = (e: any) => {
+    console.log(e);
+  };
+
   return (
     <Tabs>
       <TabList>
-        <Tab>
+        <Tab as="div">
           <Button leftIcon={<MdSubtitles />}>Desc</Button>
         </Tab>
-        <Tab>
+        <Tab as="div">
           <Button leftIcon={<BiCodeAlt />}>Code</Button>
         </Tab>
-        <Tab>
+        <Tab as="div">
           <Button leftIcon={<BsFillImageFill />}>Image</Button>
         </Tab>
       </TabList>
@@ -54,7 +58,7 @@ const NewPostByTabs = () => {
           </FormControl>
         </TabPanel>
         <TabPanel>
-          <CodeEditor />
+          <CodeEditor onCodeChange={handleChange} />
         </TabPanel>
         <TabPanel>
           <Box

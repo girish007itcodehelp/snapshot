@@ -18,19 +18,30 @@ import { BsFillMoonFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { ImSun } from "react-icons/im";
 import ProfileMenu from "./ProfileMenu";
+import { useDispatch, useSelector } from "react-redux";
+import { authState, setLoginUser } from "redux/slices/authSlice";
 
 const Header: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const [authUser, setAuthUser] = useState<boolean>(false);
+  const user = useSelector(authState);
+
+  console.log("user from header", user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user: any) => {
-      if (user) setAuthUser(user);
-      console.log("user =>", user);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          setLoginUser({
+            ...user.providerData[0],
+          })
+        );
+      } else {
+        dispatch(setLoginUser({}));
+      }
     });
-    return () => {
-      unsubscribe();
-    };
+    return unsubscribe;
   }, []);
 
   return (
@@ -93,8 +104,8 @@ const Header: React.FC = () => {
 
             {/* profile start */}
             <Box>
-              {authUser ? (
-                <ProfileMenu user={authUser} />
+              {user && user?.isAuthenticated ? (
+                <ProfileMenu user={user.user} />
               ) : (
                 <Button variant="solid" onClick={signInWithGoogle}>
                   Login

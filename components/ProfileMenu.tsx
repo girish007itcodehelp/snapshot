@@ -12,14 +12,19 @@ import {
   useColorModeValue,
   WrapItem,
 } from "@chakra-ui/react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/clientApp";
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { setLogout } from "redux/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 interface Props {
   user: any;
 }
 
 const ProfileMenu = (props: Props) => {
+  const dispatch = useDispatch();
   const { user } = props;
   return (
     <Menu>
@@ -59,6 +64,21 @@ const ProfileMenu = (props: Props) => {
           <MenuItem>Docs</MenuItem>
           <MenuItem>FAQ</MenuItem>
         </MenuGroup>
+        <MenuDivider />
+        <MenuItem
+          onClick={() => {
+            signOut(auth);
+            dispatch(
+              setLogout({
+                isAuthenticated: false,
+                loading: false,
+                user: {},
+              })
+            );
+          }}
+        >
+          Logout
+        </MenuItem>
       </MenuList>
     </Menu>
   );

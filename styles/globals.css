@@ -170,18 +170,21 @@ body {
 /* .em-editor {
   height: 300px;
 } */
-.ͼg {
+.cm-editor .ͼg {
   color: rgb(152, 152, 255) !important;
 }
-.ͼc {
+.cm-editor .ͼc {
   color: rgb(219, 120, 95);
 }
-.ͼb {
+.cm-editor .ͼb {
   color: rgb(107, 238, 144);
 }
-.ͼe {
+.cm-editor .ͼe {
   color: rgb(52, 166, 215);
 }
-.ͼ28x {
+/* .ͼ28x {
   color: #228bff;
+} */
+.cm-editor .ͼl {
+  color: #f4863c;
 }

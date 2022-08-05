@@ -1,4 +1,3 @@
-import { VerifyIcon } from "@assets/icons";
 import {
   Avatar,
   Box,
@@ -12,7 +11,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
-import { SiVerizon } from "react-icons/si";
 import { shimmer, toBase64 } from "./Image";
 
 type Active = boolean;

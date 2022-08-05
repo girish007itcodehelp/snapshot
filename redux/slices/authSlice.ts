@@ -20,40 +20,51 @@ const initialState: AuthInterface = {
     user: {}
 };
 
-export const loginUser = createAsyncThunk("auth/login", async () => {
-    let data = {}
-    const unsubscribe = onAuthStateChanged(auth, (user: any) => {
-        unsubscribe();
-        data = user;
-    })
-    console.log("unsubscribe", unsubscribe)
-    // let currentUser;
 
-    // let abc = onAuthStateChanged(auth, async (user) => {
-    //     if (user) currentUser = user
-    // })
-    return data;
-});
+// export const loginUser = createAsyncThunk(
+//     "auth/google",
+//     async ({ username, password }) => {
+//         await createAccount(username, password);
+//     }
+// );
+
 
 export const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(loginUser.pending, (state) => {
-                state.loading = true;
-            })
-            .addCase(loginUser.fulfilled, (state, { payload }) => {
-                state.loading = false;
-                state.isAuthenticated = true;
-                state.user = { data: payload }
-            })
-            .addCase(loginUser.rejected, (state) => {
-                state.isAuthenticated = false;
-                state.loading = false;
-            });
+    reducers: {
+        setLoginUser: (state, { payload }) => {
+            state.loading = false;
+            state.user = payload;
+            state.isAuthenticated = true
+
+        },
+        setLogout: (state, { payload }) => {
+            state.loading = payload.loading;
+            state.user = payload.user;
+            state.isAuthenticated = payload.isAuthenticated
+
+        },
+
     },
+    // extraReducers: (builder) => {
+    //     builder
+    //         .addCase(loginUser.pending, (state) => {
+    //             state.loading = true;
+    //         })
+    //         .addCase(loginUser.fulfilled, (state, { payload }) => {
+    //             state.loading = false;
+    //             state.isAuthenticated = true;
+    //             state.user = {payload};
+    //         })
+    //         .addCase(loginUser.rejected, (state) => {
+    //             state.loading = false;
+    //             state.isAuthenticated = false;
+    //         });
+    // },
+
 });
 
 export const authState = (state: RootState) => state.auth;
+
+export const { setLoginUser, setLogout } = authSlice.actions;
