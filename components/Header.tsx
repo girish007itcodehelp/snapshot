@@ -23,7 +23,6 @@ import { authState, setLoginUser } from "redux/slices/authSlice";
 
 const Header: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [authUser, setAuthUser] = useState<boolean>(false);
   const user = useSelector(authState);
 
   console.log("user from header", user);
@@ -37,8 +36,6 @@ const Header: React.FC = () => {
             ...user.providerData[0],
           })
         );
-      } else {
-        dispatch(setLoginUser({}));
       }
     });
     return unsubscribe;
@@ -107,7 +104,13 @@ const Header: React.FC = () => {
               {user && user?.isAuthenticated ? (
                 <ProfileMenu user={user.user} />
               ) : (
-                <Button variant="solid" onClick={signInWithGoogle}>
+                <Button
+                  rounded="full"
+                  variant="solid"
+                  bg="#766fe4"
+                  onClick={signInWithGoogle}
+                  color="white"
+                >
                   Login
                 </Button>
               )}

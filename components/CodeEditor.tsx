@@ -8,12 +8,12 @@ import {
 import { languages } from "@codemirror/language-data";
 import { tags as t } from "@lezer/highlight";
 import { createTheme } from "@uiw/codemirror-themes";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 import React, { useState } from "react";
 import { githubDark } from "@uiw/codemirror-theme-github";
 
 interface Props {
-  onCodeChange?: React.FC;
+  onCodeChange?: ReactCodeMirrorProps["onChange"];
 }
 
 const myTheme = createTheme({

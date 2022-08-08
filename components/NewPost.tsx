@@ -11,10 +11,12 @@ import {
 import React from "react";
 import CodeEditor from "./CodeEditor";
 import NewPostByTabs from "./NewPostByTabs";
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const NewPost: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Modal size="xl" isCentered isOpen={isOpen} onClose={onClose}>
@@ -28,8 +30,8 @@ const NewPost: React.FC<Props> = ({ isOpen, onClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" colorScheme="blue" mr={3} onClick={onClose}>
-            Close
+          <Button variant="outline" colorScheme="blue" mr={3} onClick={onClose}>
+            Submit
           </Button>
         </ModalFooter>
       </ModalContent>

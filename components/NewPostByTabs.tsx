@@ -1,11 +1,9 @@
 import {
   Box,
   Button,
-  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
-  Icon,
   Input,
   Tab,
   TabList,
@@ -13,10 +11,8 @@ import {
   TabPanels,
   Tabs,
   Textarea,
-  Tooltip,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
 import { BiCodeAlt } from "react-icons/bi";
 import { BsFillImageFill } from "react-icons/bs";
 import { FaUpload } from "react-icons/fa";
@@ -48,7 +44,7 @@ const NewPostByTabs = () => {
             <FormLabel>Title</FormLabel>
             <Input />
             <FormHelperText>
-              Title will be highlighted in the website.
+              Title will be highlighted in the post.
             </FormHelperText>
           </FormControl>
           <FormControl>
@@ -81,10 +77,13 @@ const NewPostByTabs = () => {
                 alignItems="center"
               >
                 <FormLabel htmlFor="targetFile">
-                  <Button leftIcon={<FaUpload />}>Upload the Image</Button>
+                  {/* Upload */}
+                  <Button as="span" leftIcon={<FaUpload />} cursor="pointer">
+                    Upload the Image
+                  </Button>
                 </FormLabel>
-                <Box id="targetFile" display="none">
-                  <Input type="file" />
+                <Box display="none">
+                  <Input type="file" id="targetFile" />
                 </Box>
               </Box>
             </Box>

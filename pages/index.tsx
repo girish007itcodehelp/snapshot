@@ -1,4 +1,4 @@
-import { Box, Container, Flex, useColorMode } from "@chakra-ui/react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 import Center from "@components/Center";
 import Copyright from "@components/Copyright";
 import LeftBottom from "@components/LeftBottom";
@@ -6,16 +6,14 @@ import LeftCard from "@components/LeftCard";
 import RightBottomCard from "@components/RightBottomCard";
 import RightCard from "@components/RightCard";
 import TopCard from "@components/TopCard";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/clientApp";
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { authState, setLoginUser } from "redux/slices/authSlice";
 import getStore from "redux/store";
+import { auth } from "../firebase/clientApp";
 
 const Home: NextPage = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   const user = useSelector(authState);
   // console.log("dis", user);
   // const hello = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,15 +59,18 @@ export default Home;
 
 export const getServerSideProps = async () => {
   const store = getStore();
+  let currentUser;
   let a = auth.onAuthStateChanged(async (user) => {
-    console.log("getserver", user?.providerData);
+    console.log("getserver", user);
+    currentUser = user;
     await store.dispatch(
       setLoginUser({
         ...user?.providerData[0],
       })
     );
   });
-  console.log("a", a);
+  a();
+  console.log("a", currentUser);
   return {
     props: {
       initialState: store.getState(),
